@@ -25,9 +25,17 @@ to put the title and picture on the screen
                         <h2 class="card-title">The CST 205 Cooking Emporium!</h2>
                     </div>
                 </div>
-            <a href= "{{ url_for('search') }}">
-                Click to Search and Find Recipes!
-            </a>
+                <div class="card mt-4">
+                    <div class="card-body">
+                      <h3 class="card-title">Search for the recipe</h3>
+                      <form method="POST" action="/">
+                        {{ form.csrf_token }}
+                        {{ form.search_string.label }} 
+                        {{ form.search_string(size=32) }}
+                        <input type="submit" value="Submit">
+                      </form>
+                    </div>
+                </div>
             <a href= "{{ url_for('submit') }}">
                 Click to Add and Edit Recipes!
             </a>
