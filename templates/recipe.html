@@ -1,0 +1,64 @@
+<!-- Name : Vy Chau
+Email: vchau@csumb.edu
+Date: 05/10/2021
+Class: CST 205-01_SP21
+Description: This is the CST 205 final project search template -->
+<!doctype html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      {{ bootstrap.load_css() }}
+
+      <title>The CST 205 Recipe Cook Book</title>
+  </head>
+<body>
+    <div class="container">
+    <br>
+
+    <h2>CST 205 {{name}} Recipe</h2>
+
+    <br>
+
+    <p> Author: {{data['userName']}} </p>
+    <br><br>
+    
+    <p> Ingredients: </p>
+    <br>
+    
+    {% for i in data['ingredients'] %}
+        <li> i['ingredientName'] : i['quantity']</li>
+    {% endfor %}
+    <br><br>
+    
+    <p> Ethnicity: </p>
+    <br>
+    <p>
+    {% for i in data['ethnicity'] %}
+        {{i}}, 
+            
+    {% endfor %} </p>
+    <br><br>
+    
+    <p> Tags: </p>
+    <br>
+    <p>
+    {% for i in data['tags'] %}
+         {{i}},  
+        
+    {% endfor %} </p>
+    <br><br>
+
+    <p> Instructions: </p>
+    <br>
+    {% for i in data['instructions'] %}
+        {% for k in range(len(i)) %}
+            <li> i[k] </li>
+        {% endfor %}
+    {% endfor %}
+    <br><br>
+
+    </div>
+</body>
+
+</html>

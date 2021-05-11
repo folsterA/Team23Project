@@ -33,12 +33,27 @@ class Recipe_Edit(FlaskForm):
 def index():
     form = Recipe_Search()
     if form.validate_on_submit():
-        return redirect('/search', form.recipe_keyword)
+        keyword = form.recipe_keyword.data
+        return redirect(f'/search/{keyword}')
     return render_template('index.html', form = form)
 
-@app.route('/search') # 
+
+@app.route('/search/<keyword>') # search
 def search(keyword):
-    return render_template('search.html', keyword = keyword)
+    list = []
+    for recipe in Recipes:
+        for term in recipe["recipeName"].split():  
+            for key in keyword.split():
+                if key.lower() == term.rstrip(',').lower():   
+                    if recipe not in list:       
+                        list.append(recipe)
+        for term in recipe["tags"]:  
+            for key in keyword.split():
+                if key.lower() == term.lower():   
+                    if recipe not in list:       
+                        list.append(recipe)
+    
+    return render_template('search.html', keyword = keyword, data = list)
 
 @app.route('/submit') #submit
 def submit():
@@ -51,4 +66,4 @@ def submit():
 def recipe(name):
     for recipe in Recipes:
         if (recipe["recipeName"] == name):
-            return render_template("recipe.html", name = name)
+            return render_template("recipe.html", name = name, data = recipe)
