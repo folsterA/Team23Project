@@ -21,42 +21,33 @@ Description: This is the CST 205 final project recipe template -->
     <br>
 
     <p> Author: {{data['userName']}} </p>
-    <br><br>
+    <br>
     
     <p> Ingredients: </p>
-    <br>
+    
     
     {% for i in data['ingredients'] %}
-        <li> i['ingredientName'] : i['quantity']</li>
+        <li> {{i['ingredientName']}} : {{i['quantity']}}</li>
     {% endfor %}
-    <br><br>
-    
-    <p> Ethnicity: </p>
     <br>
-    <p>
-    {% for i in data['ethnicity'] %}
-        {{i}}, 
-            
-    {% endfor %} </p>
-    <br><br>
-    
+        
     <p> Tags: </p>
-    <br>
+    
     <p>
     {% for i in data['tags'] %}
          {{i}},  
         
     {% endfor %} </p>
-    <br><br>
+    <br>
 
     <p> Instructions: </p>
-    <br>
+
     {% for i in data['instructions'] %}
-        {% for k in range(len(i)) %}
-            <li> i[k] </li>
+        {% for k in i %}
+            <li> {{i[k]}} </li>
         {% endfor %}
     {% endfor %}
-    <br><br>
+    <br>
 
     </div>
 </body>
