@@ -49,6 +49,18 @@ Description: This is the CST 205 final project recipe template -->
     {% endfor %}
     <br>
 
+    <img
+        src="{{data['urlFor']}}"
+        width="250"
+        class="img-fluid rounded"
+        alt="{{name}}"
+    >
+    <br><br>
+
+    <a href="{{ url_for('index') }}" class="card-link">Take me home</a>
+    <br><br>
+    <br><br>
+
     </div>
 </body>
 
