@@ -1,0 +1,50 @@
+<! -- 
+Name: Austin Folster
+Date: 4/16/2021
+Course Title: CST 205
+Description: This is an html file that takes a list of image information and loops through them
+to put the title and picture on the screen
+-->
+<!doctype html>
+
+    <head>
+        {% block head %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            {% block styles %}
+                {{ bootstrap.load_css() }}
+            {% endblock %}
+            <title>The CST 205 Recipe Cook Book</title>
+        {% endblock %}
+    </head>
+    <body>
+        {% block content %}
+            <div class="container mb-4">  
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <h2 class="card-title">The CST 205 Cooking Emporium!</h2>
+                    </div>
+                </div>
+            <form method="POST" action="/">
+                {{ form.csrf_token }}
+                {{ form.name.label }} 
+                {{ form.name(size=32) }}
+                {{ form.user_name.label }} 
+                {{ form.user_name(size=32) }}
+                {{ form.ingredients.label }} 
+                {{ form.ingredients(size=32) }}
+                {{ form.ethnicity.label }} 
+                {{ form.ethnicity(size=32) }}
+                {{ form.instructions.label }} 
+                {{ form.instructions(size=32) }}
+                {{ form.tags.label }} 
+                {{ form.tags(size=32) }}
+                {{ form.imageURL.label }} 
+                {{ form.imageURL(size=32) }}
+                <input type="submit" value="Submit">
+            </form>
+            </div>
+        {% endblock %}
+    </body>
+
+</html>
